@@ -1,11 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Green Earth</title>
+    <!-- Daisy UI + tailwind CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- CSS link -->
+    <link rel="stylesheet" href="./styles/style.css" />
+
+    <!-- Font awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body class="inter">
+    <!-- header area start -->
+    <header>
+        <!-- Nav bar start -->
+        <nav class=" ">
+            <div class="navbar bg-[#15803d] shadow-sm mx-auto ">
+        <div class="navbar-start ml-15">
+          <div class="dropdown">
+            <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </div>
+            <ul
+              tabindex="0"
+              class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow items-center border-1 "
+            >
+            <li ><a>About</a></li>
+            <li >Gallery</li>
+            <li ><a>Plant a Tree</a></li>
+            </ul>
+          </div>
+          <div>
+            <span><i class="fa-solid fa-tree invert"></i></span>
+            <a class="btn btn-ghost text-xl text-white">Green Earth</a>
+          </div>
+        </div>
+        <div class="navbar-center hidden lg:flex">
+          <ul class="menu menu-horizontal px-1 flex  items-center text-white">
+            <li><a>About</a></li>
+            <li><a>Gallery</a></li>
+            <li><a>Plant a Tree</a></li>
+          </ul>
+        </div>
+        <div class="navbar-end mr-15 ">
+          <a class="btn rounded-3xl bg-amber-300 text-green-500 border-none">Plant a Tree</a>
+        </div>
+            </div>
+        </nav>
+        <!-- Nav bar End -->
+
+        <!-- Hero Section start -->
+
+        <div class="flex justify-center items-center mx-auto gap-7 bg-[#cff0dc] ">
+            <div>
+                <img src="./assets/hero-leaf1.png" alt="">
+            </div>
+            <div class="text-center space-y-4">
+                <h1 class="text-3xl font-bold">Plant a Tree, Grow a Future</h1>
+                <p class="font-normal text-lg">Join our mission to plant 1 million trees and make the Earth greener for future <br>
+                generations.
+                </p>
+                <a class="btn rounded-3xl bg-amber-300 text-green-500 border-none">Get Involved</a>
+            </div>
+            <div>
+                <img src="./assets/hero-leaf2.png" alt="">
+            </div>
+        </div>
+    </header>
+    <!-- header area end -->
     
-</body>
+    <!-- main area start -->
+    <main>
+        <div>
+            <h2 class="font-bold text-3xl text-center mt-10">Choose Your Trees</h2>
+        </div>
+        <div class="grid grid-cols-12 gap-6 mx-auto mt-7">
+            <!-- Left Section -->
+            <aside id="categories-container" class="border-2 border-red-500 h-[100px] col-span-2 ml-5">
+                <h3 class="text-xl font-bold">Categories</h3>
+                <ul id="ul-categories">
+                    <li class="font-medium text-lg hover:bg-[#15803d] hover:text-white rounded-lg p-2 ">All Trees</li>
+                </ul>
+            </aside>
+
+            <!-- Middle Section -->
+            <div class="border-2 border-green-500 h-[100px] col-span-8"></div>
+            <!-- Right Side -->
+            <aside class="border-2 border-blue-500 h-[100px] col-span-2 mr-5"></aside>
+        </div>
+    </main>
+    <!-- main area end -->
+
+    <!-- footer area start -->
+    <footer></footer>
+  </body>
 </html>
