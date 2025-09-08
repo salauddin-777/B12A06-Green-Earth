@@ -28,8 +28,8 @@ const showPlantsSection = (plants) =>{
         
         showPlants.innerHTML += `
            <div class=" shadow-xl p-3 m-3 space-y-4">
-                    <img class="rounded-sm " src="${plant.image}" alt="">
-                    <h2 class="font-bold text-xl">${plant.name}</h2>
+                    <img class="rounded-sm md:w-77 md:h-72" src="${plant.image}" alt="">
+                    <h2 onclick = "loadTreeModal(${plant.id})" class="font-bold text-xl ">${plant.name}</h2>
                     <p>${plant.description}</p>
                     <div class="flex justify-between items-center">
                         <h4 class="text-green-600 bg-[#cff0dc] p-2 rounded-lg">Fruit Tree</h4>
@@ -54,9 +54,9 @@ const allTreesShow =(trees) =>{
     showPlants.innerHTML = '';
     trees.forEach(tree =>{
         showPlants.innerHTML += `
-           <div class=" shadow-xl p-3 m-3 space-y-4 image-container ">
-                    <img class="rounded-sm " src="${tree.image}" alt="">
-                    <h2 class="font-bold text-xl">${tree.name}</h2>
+           <div class="  shadow-xl p-3 m-3 space-y-4 image-container ">
+                    <img class="rounded-sm md:w-77 md:h-72" src="${tree.image}" alt="">
+                    <h2 onclick ="loadTreeModal(${tree.id})" class="font-bold text-xl ">${tree.name }</h2>
                     <p>${tree.description}</p>
                     <div class="flex justify-between items-center">
                         <h4 class="text-green-600 bg-[#cff0dc] p-2 rounded-lg">Fruit Tree</h4>
@@ -68,6 +68,27 @@ const allTreesShow =(trees) =>{
     })
 }
 
+const loadTreeModal = async (id)=>{
+    const url = `https://openapi.programming-hero.com/api/plant/${id}`;
+    const res = await fetch(url);
+    const details = await res.json()
+    showTreeModal(details.plants); 
+}
+
+const showTreeModal = (tree)=>{
+    console.log(tree);
+    const detailsBox = document.getElementById('details-container')
+    detailsBox.innerHTML = `
+    <div class = "space-y-3">
+        <h2 class="font-bold text-2xl">${tree.name}</h2>
+        <img class = "md:w-[100%] md:h-72"" src="${tree.image}" alt="">
+        <h3 ><span class = "font-bold">Category : </span> ${tree.category} </h3>
+        <h3><span class = "font-bold">Price</span><i class="fa-solid fa-bangladeshi-taka-sign"></i> <span>${tree.price}</span></h3>
+        <p class = "md:w-100%" ><span class = "font-bold">Description: </span>: ${tree.description}</p>
+    </div>
+    `
+    document.getElementById('tree_modal').showModal();
+}
 
 
 const showCategories = (categories) =>{
