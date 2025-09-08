@@ -1,5 +1,6 @@
 const ulCategories = document.getElementById('ul-categories');
 const showPlants = document.getElementById('show-plants');
+const youCartContainer = document.getElementById('your-cart-container');
 
 const loadCategories = () =>{
     const url = 'https://openapi.programming-hero.com/api/categories';
@@ -35,7 +36,7 @@ const showPlantsSection = (plants) =>{
                         <h4 class="text-green-600 bg-[#cff0dc] p-2 rounded-lg">Fruit Tree</h4>
                         <h2><i class="fa-solid fa-bangladeshi-taka-sign"></i> <span>${plant.price}</span></h2>
                     </div>
-                    <button class="btn text-white bg-[#15803d] sm:flex-wrap w-full rounded-2xl">Add to Cart</button>
+                    <button onclick = "yourCartLoader(${plant.id})" class="btn text-white bg-[#15803d] sm:flex-wrap w-full rounded-2xl">Add to Cart</button>
                 </div> 
         `
     })
@@ -47,6 +48,7 @@ const allTrees = (id) =>{
     .then(res=> res.json())
     .then(data=>{
         allTreesShow(data.plants);
+        yourCart(data.plants);
     })
 }
 
@@ -62,7 +64,7 @@ const allTreesShow =(trees) =>{
                         <h4 class="text-green-600 bg-[#cff0dc] p-2 rounded-lg">Fruit Tree</h4>
                         <h2><i class="fa-solid fa-bangladeshi-taka-sign"></i> <span>${tree.price}</span></h2>
                     </div>
-                    <button class="btn text-white bg-[#15803d] sm:flex-wrap w-full rounded-2xl">Add to Cart</button>
+                    <button onclick ="yourCartLoader(${tree.id})" class="btn text-white bg-[#15803d] sm:flex-wrap w-full rounded-2xl">Add to Cart</button>
                 </div> 
         `
     })
@@ -93,10 +95,34 @@ const showTreeModal = (tree)=>{
 
 const showCategories = (categories) =>{
     categories.forEach(cat =>{
-        ulCategories.innerHTML += `
-            
+        ulCategories.innerHTML += `  
             <li onclick = 'loadPlants(${cat.id})' class="font-medium text-lg hover:bg-[#15803d] hover:text-white rounded-lg p-2 ">${cat.category_name}</li>
         `
     })
 }
+
+const yourCartLoader = (id) =>{
+    const url = `https://openapi.programming-hero.com/api/plant/${id}`;
+    fetch(url)
+    .then(res=> res.json())
+    .then(data=>{
+        console.log(data.plants);
+        yourCart(data.plants);
+    })
+}
+
+const yourCart = (detail) =>{
+    youCartContainer.innerHTML += `
+            <div class = "my-5 bg-[#f0fcf4] rounded-2xl  mx-2 p-2">
+                <h2>${detail.name}</h2>
+                <div class="flex justify-between mx-2 my-3">
+                  <h3><i class="fa-solid fa-bangladeshi-taka-sign"></i>${detail.price} X 1</h3>
+                  <i class="fa-solid fa-xmark"></i>
+                </div>
+              </div>
+    
+    `
+    
+}
+
 loadCategories();
