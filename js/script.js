@@ -1,6 +1,8 @@
 const ulCategories = document.getElementById('ul-categories');
 const showPlants = document.getElementById('show-plants');
 const youCartContainer = document.getElementById('your-cart-container');
+const totalPriceContainer = document.getElementById('total-price-container');
+let totalPrice = 0;
 
 const loadCategories = () =>{
     const url = 'https://openapi.programming-hero.com/api/categories';
@@ -106,23 +108,24 @@ const yourCartLoader = (id) =>{
     fetch(url)
     .then(res=> res.json())
     .then(data=>{
-        console.log(data.plants);
         yourCart(data.plants);
     })
 }
 
 const yourCart = (detail) =>{
+    // alert('Adding card  ')
+    const price = Number(detail.price) || 0;
     youCartContainer.innerHTML += `
             <div class = "my-5 bg-[#f0fcf4] rounded-2xl  mx-2 p-2">
                 <h2>${detail.name}</h2>
                 <div class="flex justify-between mx-2 my-3">
                   <h3><i class="fa-solid fa-bangladeshi-taka-sign"></i>${detail.price} X 1</h3>
-                  <i class="fa-solid fa-xmark"></i>
+                  <h3>X</h3>
                 </div>
               </div>
-    
     `
-    
+    totalPrice += price;
+    document.getElementById("total-price").innerText = totalPrice;
 }
-
+allTrees();
 loadCategories();
