@@ -131,7 +131,7 @@ const yourCartLoader = (id) =>{
 }
 
 const yourCart = (detail) =>{
-    // alert('Adding card  ')
+    alert(`${detail.name} has been added to the cart`);
     const price = Number(detail.price) || 0;
     const uniqueId = `cart-item-${detail.id}-${Date.now()}`;
     youCartContainer.innerHTML += `
