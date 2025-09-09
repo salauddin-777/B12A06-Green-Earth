@@ -136,7 +136,7 @@ const yourCart = (detail) =>{
     const uniqueId = `cart-item-${detail.id}-${Date.now()}`;
     youCartContainer.innerHTML += `
             <div id="${uniqueId}" class = "my-5 bg-[#f0fcf4] rounded-2xl  mx-2 p-2">
-                <h2>${detail.name}</h2>
+                <h2 class = "font-bold">${detail.name}</h2>
                 <div class="flex justify-between mx-2 my-3">
                   <h3><i class="fa-solid fa-bangladeshi-taka-sign"></i>${detail.price} X 1</h3>
                    <h3 onclick="removeFromCart('${uniqueId}', ${price})" 
